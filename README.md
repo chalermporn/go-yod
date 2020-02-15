@@ -1,27 +1,44 @@
 ---
 marp: true
 ---
+
 # <!--fit--> Golang by P'Yod
+
 Training golang by P'Yod
 15 - 16 Feb 2020
 at THINK SOciety: Co-working Space & Cafe
 
 ---
-## การติดตั้ง ภาษา Go
 
-## วิธี run and compile
-- การ compile ข้าม platform
+## การติดตั้ง ภาษา Go ##
+## วิธี run and compile ##
 
-## การเขียน Unit testing
-- TDD concept
+* การ compile ข้าม platform
+
+## การเขียน Unit testing ##
+
+* TDD concept
 
 ---
-# <!--fit--> TDD concept
+
+# <!--fit--> TDD concept 
+
+---
+
+![classic_tdd](images/classic_tdd.png)
+*Note - Test Driven Design Posted on December 9, 2018 [TDD Estilo Londres](https://josemyduarte.github.io/2018-12-09-tdd-outside-in/).*
+
+---
+
+![classic_tdd](images/classic_tdd.png){: .floatright}
+
 ---
 # วิธีการ Run test 
+
 ```sh
 go test -v
 ```
+
 ```sh
 === RUN   TestFizzBuzzSayOrigin
 === RUN   TestFizzBuzzSayOrigin/given_1_say_1
@@ -38,19 +55,25 @@ go test -v
 PASS
 ok      hello/fizzbuzz  0.192s
 ```
+
 ---
 # วิธีการ Run test แบบ Need tags
+
 ```sh
 ├── fizzbuzz
     ├── fizzbuzz.go
     ├── fizzbuzz_integration_test.go
     └── fizzbuzz_test.go
 ```
+
 use diractory `fizzbuzz`
+
 ```sh
 cd fizzbuzz
 ```
+
 run test
+
 ```sh
 go test -tags integration -run TestFizzBuzz1To100
 ```
