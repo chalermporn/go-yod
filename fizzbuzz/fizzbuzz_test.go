@@ -22,3 +22,15 @@ func TestFizzBuzzSayOrigin(t *testing.T) {
 		}
 	})
 }
+
+func TestFizzBuzzSayFizz(t *testing.T) {
+	t.Run("given 3 say Fizz", func(t *testing.T) {
+		var given = 3
+		var want = "Fizz"
+
+		var get = Say(given)
+		if want != get {
+			t.Errorf("given %v want %q but get %q", given, want, get)
+		}
+	})
+}
