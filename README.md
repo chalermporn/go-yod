@@ -29,10 +29,6 @@ at THINK SOciety: Co-working Space & Cafe
 *Note - Test Driven Design Posted on December 9, 2018 [TDD Estilo Londres](https://josemyduarte.github.io/2018-12-09-tdd-outside-in/).*
 
 ---
-
-![classic_tdd](images/classic_tdd.png){: .floatright}
-
----
 # วิธีการ Run test 
 
 ```sh
