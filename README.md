@@ -1,3 +1,8 @@
+---
+marp: true
+---
+# <!--fit--> Golang by Yod
+---
 # GOLANG [go-yod]
 
 Training golang by P'Yod
@@ -11,3 +16,21 @@ Training golang by P'Yod
 ## การเขียน Unit testing
 - TDD concept
 
+---
+# <!--fit--> TDD concept
+---
+# วิธีการรัน test แบบ need tags
+```sh
+├── fizzbuzz
+    ├── fizzbuzz.go
+    ├── fizzbuzz_integration_test.go
+    └── fizzbuzz_test.go
+```
+use diractory `fizzbuzz`
+```sh
+cd fizzbuzz
+```
+run test
+```sh
+go test -tags integration -run TestFizzBuzz1To10
+```
