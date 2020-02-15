@@ -33,4 +33,53 @@ func TestFizzBuzzSayFizz(t *testing.T) {
 			t.Errorf("given %v want %q but get %q", given, want, get)
 		}
 	})
+	t.Run("given 9 say Fizz", func(t *testing.T) {
+		var given = 9
+		var want = "Fizz"
+
+		var get = Say(given)
+		if want != get {
+			t.Errorf("given %v want %q but get %q", given, want, get)
+		}
+	})
+}
+func TestFizzBuzzSayBuzz(t *testing.T) {
+	t.Run("given 5 say Buzz", func(t *testing.T) {
+		var given = 5
+		var want = "Buzz"
+
+		var get = Say(given)
+		if want != get {
+			t.Errorf("given %v want %q but get %q", given, want, get)
+		}
+	})
+	t.Run("given 10 say Buzz", func(t *testing.T) {
+		var given = 10
+		var want = "Buzz"
+
+		var get = Say(given)
+		if want != get {
+			t.Errorf("given %v want %q but get %q", given, want, get)
+		}
+	})
+}
+func TestFizzBuzzSayFizzBuzz(t *testing.T) {
+	t.Run("given 15 say FizzBuzz", func(t *testing.T) {
+		var given = 15
+		var want = "FizzBuzz"
+
+		var get = Say(given)
+		if want != get {
+			t.Errorf("given %v want %q but get %q", given, want, get)
+		}
+	})
+	t.Run("given 45 say FizzBuzz", func(t *testing.T) {
+		var given = 45
+		var want = "FizzBuzz"
+
+		var get = Say(given)
+		if want != get {
+			t.Errorf("given %v want %q but get %q", given, want, get)
+		}
+	})
 }
