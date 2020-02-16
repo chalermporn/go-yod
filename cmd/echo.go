@@ -43,7 +43,7 @@ func fizzbuzzHandler(c echo.Context) error {
 	type ErrorResponse struct {
 		Message string `json:"message"`
 	}
-	
+
 	defer func(){
 		if r := recover(); r != nil {
 			return c.JSON(http.StatusInternalServerError, ErrorResponse{

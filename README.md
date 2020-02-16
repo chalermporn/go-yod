@@ -167,3 +167,57 @@ header ทำ signature ด้วยอะไร
 issuer เป็นใคร
 
 *https://godoc.org/github.com/dgrijalva/jwt-go#example-NewWithClaims--StandardClaims*
+
+---
+
+# method
+
+```go
+type rectangle struct {
+    width float64
+    length float64
+}
+
+func  area((r rectangle))  float64 {
+    return r.width * r.length
+}
+```
+
+```go
+type rectangle struct {
+    width float64
+    length float64
+}
+// recipver
+func (r rectangle) area() float64 {
+    return r.width * r.length
+}
+```
+
+---
+
+# method with pointer receiver
+
+```go
+type rectangle struct {
+    width float64
+    length float64
+}
+
+func (r *rectangle) area() float64 {
+    return r.width * r.length
+}
+```
+
+---
+
+# method on primitive type
+
+```go
+type text string
+
+
+func (t text) split(sep string) []string{
+    return strings.Split(string(t), sep)
+}
+```
