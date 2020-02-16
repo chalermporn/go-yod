@@ -39,14 +39,25 @@ func oscarmale(c echo.Context) error {
 
 func fizzbuzzHandler(c echo.Context) error {
 
-	tokenString := c.Request().Header.Get("Authorization")[7:]
+	// tokenString := c.Request().Header.Get("Authorization")[7:]
+	type ErrorResponse struct {
+		Message string `json:"message"`
+	}
+	
+	defer func(){
+		if r := recover(); r != nil {
+			return c.JSON(http.StatusInternalServerError, ErrorResponse{
+				Message: err.Error(),
+			})
+		}
+	}
+
+
 	var validateSignature = func(tokenString *jwt.Token) (interface{}, error) {
 		return []byte("AllYourBase"), nil
 	}
 	_, err := jwt.Parse(tokenString, validateSignature)
-	type ErrorResponse struct {
-		Message string `json:"message"`
-	}
+	
 	if err != nil {
 		return c.JSON(http.StatusUnauthorized, ErrorResponse{
 			Message: err.Error(),
