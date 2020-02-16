@@ -74,3 +74,96 @@ run test
 ```sh
 go test -tags integration -run TestFizzBuzz1To100
 ```
+
+---
+# Anonymous Function
+
+---
+# First-Class Function
+
+---
+# Higher-Order Function
+
+
+---
+
+# defer
+
+รับ  exques function
+
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    defer fmt.Println("end")
+
+    fmt.Println("Hello, Gophers")
+}
+
+```
+
+---
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    doSomething(4)
+}
+
+func doSomething(n int) {
+    defer fmt.Println(n) //1
+    defer func() { //2
+        fmt.Println(n) //4
+    }()
+    n = n * n
+    fmt.Println(n) //3
+}
+```
+
+---
+
+# Anti func
+
+type cache
+
+```go
+
+package main
+
+import "fmt"
+
+func main() {
+    catchMe()
+}
+
+func catchMe() {
+    defer func() {
+        if r := recover(); r != nil {
+            fmt.Println(r)
+        }
+    }()
+
+    s := []int{}
+
+    fmt.Println(s[1])
+}
+```
+
+---
+
+# jwt.io
+เป็นแค่การทำ  jode
+
+header ทำ signature ด้วยอะไร
+
+*go get github.com/dgrijalva/jwt-go*
+
+issuer เป็นใคร
+
+*https://godoc.org/github.com/dgrijalva/jwt-go#example-NewWithClaims--StandardClaims*
