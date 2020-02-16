@@ -83,3 +83,17 @@ func TestFizzBuzzSayFizzBuzz(t *testing.T) {
 		}
 	})
 }
+func TestFizzBuzzNew(t *testing.T) {
+	t.Run("New", func(t *testing.T) {
+
+		var given = 45
+		var want = "FizzBuzz"
+		fb := New(given)
+
+		var get = fb.String()
+		if want != get {
+			t.Errorf("given %v want %q but get %q", given, want, get)
+		}
+	})
+
+}

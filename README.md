@@ -221,3 +221,30 @@ func (t text) split(sep string) []string{
     return strings.Split(string(t), sep)
 }
 ```
+
+---
+
+interface
+To define a set of method signatures
+
+Interfaces specify behaviors. 
+An interface type defines a set 
+of methods:
+
+type Stringer interface {
+    String() string
+}
+Interfaces are implemented implicitly
+การเอามา  define 
+
+---
+
+# Interface names
+
+`By convention, one-method interfaces are named by the method name plus an -er suffix or similar modification to construct an agent noun: Reader, Writer, Formatter, CloseNotifier etc.`
+
+*https://golang.org/pkg/fmt/#Stringer*
+
+---
+
+test dubble [fake,mock]

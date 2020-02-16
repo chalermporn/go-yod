@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"hello/fizzbuzz"
 	"hello/oscar"
+	"math/rand"
 	"net/http"
 	"strconv"
 	"time"
@@ -25,6 +26,7 @@ func main() {
 	e.GET("/oscarmale", oscarmale)
 	e.GET("/fizzbuzz/:number", fizzbuzzHandler)
 	e.POST("/fizzbuzz", postFizzbuzzHandler)
+	e.GET("/fizzbuzzr", fizzbuzzrHandler)
 	e.POST("/token", tokenHandler)
 
 	// Start server
@@ -39,25 +41,24 @@ func oscarmale(c echo.Context) error {
 
 func fizzbuzzHandler(c echo.Context) error {
 
-	// tokenString := c.Request().Header.Get("Authorization")[7:]
+	tokenString := c.Request().Header.Get("Authorization")[7:]
 	type ErrorResponse struct {
 		Message string `json:"message"`
 	}
 
-	defer func(){
+	defer func() {
 		if r := recover(); r != nil {
-			return c.JSON(http.StatusInternalServerError, ErrorResponse{
-				Message: err.Error(),
+			c.JSON(http.StatusInternalServerError, ErrorResponse{
+				Message: fmt.Sprintf("%s", r),
 			})
 		}
-	}
-
+	}()
 
 	var validateSignature = func(tokenString *jwt.Token) (interface{}, error) {
 		return []byte("AllYourBase"), nil
 	}
 	_, err := jwt.Parse(tokenString, validateSignature)
-	
+
 	if err != nil {
 		return c.JSON(http.StatusUnauthorized, ErrorResponse{
 			Message: err.Error(),
@@ -119,6 +120,16 @@ func tokenHandler(c echo.Context) error {
 
 	return c.JSON(http.StatusOK, TokenResponse{
 		Token: ss,
+	})
+
+}
+
+func fizzbuzzrHandler(c echo.Context) error {
+	// จริง เราไม่ testing เพราะเราดาดเดาไม่ได้ ที่มาของคำว่า เทสดับเบิล
+	n := rand.Intn(100)
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"number":  n,
+		"message": fizzbuzz.Say(n),
 	})
 
 }
