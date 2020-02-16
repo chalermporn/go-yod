@@ -248,3 +248,65 @@ Interfaces are implemented implicitly
 ---
 
 test dubble [fake,mock]
+
+---
+
+# channel
+
+keyword chan
+คือ การแชร์ memory ที่หนึ่ง
+มี 2 แบบ คือ
+
+* no buffered channel
+* buffered channel `ไม่การันตรี`
+
+มากจาก ana lab
+
+---
+
+# buffered channel
+
+```go 
+func main() {
+    total := 10
+    ch := make(chan int, total)
+    for i := total; i > 0; i-- {
+        ch <- i
+    }
+    close(ch) // การสั่ง close คือ บอกว่าไม่รับเพิ่มแล้ว
+
+    for i := range ch { // cha
+        fmt.Println(i)
+    }
+}
+```
+ 
+ ---
+# no buffered channel
+เทคนิดที่ KTB ใช้
+
+ ```go
+func main() {
+    total := 10
+    ch := make(chan struct{})
+    now := time.Now()
+    for i := 0; i < total; i++ {
+        go printout(i, ch)
+    }
+    for i := 0; i < total; i++ {
+        <-ch
+    }
+    fmt.Println(time.Now().Sub(now))
+}
+
+func printout(i int, ch chan struct{}) {
+    fmt.Println(i)
+    ch <- struct{}{}
+}
+ ```
+
+ ---
+
+ # Closure Function
+
+ คือ การใช้ ค่าเดิม ฟังก์ชั่นที่คืนออกไป จะฟังก์ชันเดิมกลับไป
