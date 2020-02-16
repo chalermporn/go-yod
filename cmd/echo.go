@@ -124,6 +124,8 @@ func tokenHandler(c echo.Context) error {
 
 }
 
+// เราต้องเปลี่ยน func ให้ inject ได้
+
 func fizzbuzzrHandler(c echo.Context) error {
 	// จริง เราไม่ testing เพราะเราดาดเดาไม่ได้ ที่มาของคำว่า เทสดับเบิล
 	n := rand.Intn(100)
